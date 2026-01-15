@@ -57,10 +57,9 @@ export default function ApiDetailPage() {
   useEffect(() => {
     const fetchApi = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/marketplace/apis/${apiId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setApiData(data);
+        const { data, error: fetchError } = await api.getApiDetails(apiId);
+        if (data && !fetchError) {
+          setApiData(data as ApiDetail);
         } else {
           setError('API not found');
         }
