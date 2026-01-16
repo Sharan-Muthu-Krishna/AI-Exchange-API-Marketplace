@@ -90,40 +90,13 @@ npm run dev
 - **Backend API**: http://localhost:8000
 - **API Docs**: http://localhost:8000/docs
 
-## 🐳 Docker Deployment
-
-```bash
-docker-compose up --build
-```
 
 ## 👤 Default Admin
 
 - **Email**: admin@aiexchange.com
 - **Password**: Admin@123
 
-## 📁 Project Structure
 
-```
-AI-Exchange/
-├── backend/
-│   ├── app/
-│   │   ├── models/      # SQLAlchemy models
-│   │   ├── schemas/     # Pydantic schemas
-│   │   ├── routers/     # API endpoints
-│   │   ├── services/    # Business logic
-│   │   └── utils/       # Helpers
-│   ├── requirements.txt
-│   └── Dockerfile
-├── frontend/
-│   ├── src/
-│   │   ├── app/         # Next.js pages
-│   │   ├── components/  # React components
-│   │   ├── contexts/    # Auth context
-│   │   └── lib/         # API client
-│   ├── package.json
-│   └── Dockerfile
-└── docker-compose.yml
-```
 
 ## 🔌 API Gateway Usage
 
