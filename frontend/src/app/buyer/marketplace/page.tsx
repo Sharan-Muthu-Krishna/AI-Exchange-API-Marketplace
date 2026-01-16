@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import DashboardLayout from '@/components/DashboardLayout';
 import { api } from '@/lib/api';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 interface ApiItem {
   id: string;
   name: string;
@@ -160,7 +162,7 @@ export default function MarketplacePage() {
                 <div className="mb-4 p-3 bg-gray-900/50 rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">Gateway URL:</div>
                   <code className="text-xs text-indigo-400 break-all">
-                    POST http://localhost:8000/v1/apis/{item.id}/run
+                    POST {API_BASE_URL}/v1/apis/{item.id}/run
                   </code>
                 </div>
 

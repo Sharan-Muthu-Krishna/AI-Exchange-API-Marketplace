@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { api } from '@/lib/api';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 interface ApiDetail {
   id: string;
   name: string;
@@ -182,7 +184,7 @@ export default function ApiDetailPage() {
               After subscribing, use this endpoint to call the API:
             </p>
             <code className="block bg-gray-900 p-4 rounded-lg font-mono text-indigo-400 text-sm">
-              POST http://localhost:8000/v1/apis/{apiData.id}/run
+              POST {API_BASE_URL}/v1/apis/{apiData.id}/run
             </code>
           </div>
 
@@ -220,7 +222,7 @@ export default function ApiDetailPage() {
           <div className="glass-card p-6 mb-8">
             <h2 className="text-xl font-semibold mb-4">Usage Example</h2>
             <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm">
-              <code className="text-gray-300">{`curl -X POST "http://localhost:8000/v1/apis/${apiData.id}/run" \\
+              <code className="text-gray-300">{`curl -X POST "${API_BASE_URL}/v1/apis/${apiData.id}/run" \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '${apiData.input_schema || '{"your": "data"}'}'`}</code>
