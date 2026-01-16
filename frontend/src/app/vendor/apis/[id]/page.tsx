@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import DashboardLayout from '@/components/DashboardLayout';
 import { api } from '@/lib/api';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 interface ApiData {
   id: string;
   name: string;
@@ -50,7 +52,7 @@ export default function VendorApiDetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       const [apiRes, analyticsRes] = await Promise.all([
-        fetch(`http://localhost:8000/api/vendor/apis/${apiId}`, {
+        fetch(`${API_BASE_URL}/api/vendor/apis/${apiId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` }
         }),
         api.getVendorAnalytics(apiId)
@@ -170,10 +172,10 @@ export default function VendorApiDetailPage() {
           </p>
           <div className="flex items-center gap-2">
             <code className="flex-1 bg-gray-900 p-4 rounded-lg text-sm font-mono text-indigo-400">
-              POST http://localhost:8000/v1/apis/{apiData.id}/run
+              POST {API_BASE_URL}/v1/apis/{apiData.id}/run
             </code>
             <button
-              onClick={() => copyToClipboard(`http://localhost:8000/v1/apis/${apiData.id}/run`)}
+              onClick={() => copyToClipboard(`${API_BASE_URL}/v1/apis/${apiData.id}/run`)}
               className="px-4 py-4 rounded-lg bg-gray-800 hover:bg-gray-700 transition"
             >
               📋
